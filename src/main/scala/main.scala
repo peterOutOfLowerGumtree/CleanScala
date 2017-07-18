@@ -1,9 +1,6 @@
 
-object main {
-
-  def main(args: Array[String]): Unit = {
-    longAndShort("000000000176867654456541")
-  }
+object main extends App {
+  longAndShort("00000000017000000001")
 
   def longAndShort(input: String): Unit = {
     try {
