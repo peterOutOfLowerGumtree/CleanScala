@@ -8,7 +8,9 @@ project/
 lib_managed/
 src_managed/
 project/boot/
-scalastyle-config.xml
 *.html
+*.xml
+*.gif
+*.css
 .css/
 .img/
