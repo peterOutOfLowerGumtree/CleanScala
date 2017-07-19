@@ -12,3 +12,5 @@ project/boot/
 *.xml
 *.gif
 *.css
+.css/
+.img/
