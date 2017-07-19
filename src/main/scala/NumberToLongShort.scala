@@ -24,22 +24,22 @@ class NumberToLongShort {
     }
   }
 
-  def langPos(input: String, lang: List[String]): String = {
+  def langPos(input: String, language: List[String]): String = {
     val in = input.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = calculation(in, lang)
+    val out = calculation(in, language)
     out.reverse.mkString
   }
 
-  def langNeg(input: String, lang: List[String]): String = {
+  def langNeg(input: String, language: List[String]): String = {
     val in = input.tail.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = calculation(in, lang)
+    val out = calculation(in, language)
     "- " + out.reverse.mkString
   }
 
-  def calculation(input: List[String], lang: List[String]): IndexedSeq[String] = {
+  def calculation(input: List[String], language: List[String]): IndexedSeq[String] = {
     for (i <- 0 until input.length) yield {
       i match {
-        case _ if input(i) != "000" => input(i) + lang(i)
+        case _ if input(i) != "000" => input(i) + language(i)
         case _ if input(0) != "000" && input(1) == "000" => "and "
       }
     }
