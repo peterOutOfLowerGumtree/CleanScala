@@ -1,6 +1,7 @@
+
 import scala.util.{Failure, Success, Try}
 
-object NumberToLongShort extends App {
+class NumberToLongShort {
 
   lazy val english: List[String] = List(" ", " thousand and ", " million ", " billion ", " trillion ", " quadrillion ", " quintillion ", " sextillion ")
   lazy val french: List[String] = List(" ", " mille et ", " million ", " milliard ", " billion ", " billiard ", " trillion ", " triliard ")
@@ -25,25 +26,23 @@ object NumberToLongShort extends App {
 
   def langPos(input: String, lang: List[String]): String = {
     val in = input.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = for (i <- in.indices) yield {
-      i match {
-        case _ if in(i) != "000" => in(i) + lang(i)
-        case _ if in(0) != "000" && in(1) == "000" => "and "
-        case _ => ""
-      }
-    }
+    val out = calculation(in, lang)
     out.reverse.mkString
   }
 
   def langNeg(input: String, lang: List[String]): String = {
     val in = input.tail.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = for (i <- in.indices) yield {
-      i match {
-        case _ if in(i) != "000" => in(i) + lang(i)
-        case _ if in(0) != "000" && in(1) == "000" => "and "
-        case _ => ""
-      }
-    }
+    val out = calculation(in, lang)
     "- " + out.reverse.mkString
   }
+
+  def calculation(input: List[String], lang: List[String]): IndexedSeq[String] = {
+    for (i <- 0 until input.length) yield {
+      i match {
+        case _ if input(i) != "000" => input(i) + lang(i)
+        case _ if input(0) != "000" && input(1) == "000" => "and "
+      }
+    }
+  }
+
 }
