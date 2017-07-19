@@ -8,3 +8,7 @@ project/
 lib_managed/
 src_managed/
 project/boot/
+*.html
+*.xml
+*.gif
+*.css
