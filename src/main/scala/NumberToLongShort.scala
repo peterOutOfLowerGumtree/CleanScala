@@ -6,21 +6,21 @@ class NumberToLongShort {
   lazy val english: List[String] = List(" ", " thousand and ", " million ", " billion ", " trillion ", " quadrillion ", " quintillion ", " sextillion ")
   lazy val french: List[String] = List(" ", " mille et ", " million ", " milliard ", " billion ", " billiard ", " trillion ", " triliard ")
 
-  def checkIfNumber(input: String, lang: List[String]): String = {
+  def checkIfNumber(input: String, language: List[String]): String = {
     Try {
       input.toLong
     } match {
-      case Success(a) => langOutput(input, lang)
+      case Success(a) => langOutput(input, language)
       case Failure(a) => "Enter a valid positive number"
     }
   }
 
-  def langOutput(input: String, lang: List[String]): String = {
+  def langOutput(input: String, language: List[String]): String = {
     if (input.contains('-')) {
-      langNeg(input, lang)
+      langNeg(input, language)
     }
     else {
-      langPos(input, lang)
+      langPos(input, language)
     }
   }
 
