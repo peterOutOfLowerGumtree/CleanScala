@@ -7,7 +7,7 @@ class Cipher {
   "q" -> "j", "r" -> "i", "s" -> "h", "t" -> "g", "u" -> "f", "v" -> "e", "w" -> "d", "x" -> "c",
   "y" -> "b", "z" -> "a")
 
-  def convertToCipher(input: String): String = {
+  def convert(input: String): String = {
     val in = input.toLowerCase.split("")
     val out = for (i <- in.indices) yield {
       i match {
