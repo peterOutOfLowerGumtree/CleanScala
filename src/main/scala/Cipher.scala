@@ -1,14 +1,10 @@
 
 class Cipher {
 
-  val cipherCode = Map(
-  "a" -> "z", "b" -> "y", "c" -> "x", "d" -> "w", "e" -> "v", "f" -> "u", "g" -> "t", "h" -> "s",
-  "i" -> "r", "j" -> "q", "k" -> "p", "l" -> "o", "m" -> "n", "n" -> "m", "o" -> "l", "p" -> "k",
-  "q" -> "j", "r" -> "i", "s" -> "h", "t" -> "g", "u" -> "f", "v" -> "e", "w" -> "d", "x" -> "c",
-  "y" -> "b", "z" -> "a")
+  val cipherCode = ((('a' to 'z').toList) zip (('a' to 'z').reverse)).toMap
 
   def convert(input: String): String = {
-    val in = input.toLowerCase.split("")
+    val in = input.toLowerCase.toCharArray
     val out = for (i <- in.indices) yield {
       i match {
         case _ if cipherCode.contains(in(i)) => cipherCode(in(i))
