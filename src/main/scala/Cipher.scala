@@ -1,7 +1,7 @@
 
 class Cipher {
 
-  val cipherCode = ((('a' to 'z').toList) zip (('a' to 'z').reverse)).toMap
+  val cipherCode: Map[Char, Char] = (('a' to 'z').toList zip ('a' to 'z').reverse).toMap
 
   def convert(input: String): String = {
     val in = input.toLowerCase.toCharArray
