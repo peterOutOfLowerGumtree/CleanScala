@@ -16,28 +16,24 @@ class NumberToLongShort {
   }
 
   def langOutput(input: String, language: List[String]): String = {
-    if (input.contains('-')) {
-      langNeg(input, language)
-    }
-    else {
-      langPos(input, language)
+    input match {
+      case _ if input.contains('-') => langNeg(input, language)
+      case _ => langPos(input, language)
     }
   }
 
   def langPos(input: String, language: List[String]): String = {
     val in = input.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = calculation(in, language)
-    out.reverse.mkString
+    calculation(in, language).reverse.mkString
   }
 
   def langNeg(input: String, language: List[String]): String = {
     val in = input.tail.replaceFirst("^0*", "").reverse.grouped(3).toList.map(_.reverse.toList.mkString)
-    val out = calculation(in, language)
-    "- " + out.reverse.mkString
+    "- " + calculation(in, language).reverse.mkString
   }
 
   def calculation(input: List[String], language: List[String]): IndexedSeq[String] = {
-    for (i <- 0 until input.length) yield {
+    for (i <- input.indices) yield {
       i match {
         case _ if input(i) != "000" => input(i) + language(i)
         case _ if input(0) != "000" && input(1) == "000" => "and "
